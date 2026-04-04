@@ -61,7 +61,7 @@ export default function Navbar() {
         </button>
 
         {/* Desktop links */}
-        <ul style={{ display: 'flex', gap: '0.25rem', listStyle: 'none', alignItems: 'center' }} className="hidden md:flex">
+        <ul style={{ gap: '0.25rem', listStyle: 'none', alignItems: 'center' }} className="hidden md:flex">
           {NAV_LINKS.map(({ label, id }) => (
             <li key={id} style={{ position: 'relative' }}>
               <button

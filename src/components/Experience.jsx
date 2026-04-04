@@ -18,11 +18,11 @@ export default function Experience() {
         </motion.div>
 
         {/* Timeline */}
-        <div style={{ position: 'relative', paddingLeft: '2rem' }}>
-          {/* Vertical line */}
+        <div style={{ position: 'relative', paddingLeft: '2.5rem' }}>
+          {/* Vertical line — centered on the 14px dot (7px from left) */}
           <div style={{
             position: 'absolute',
-            left: '0.65rem',
+            left: '7px',
             top: 0,
             bottom: 0,
             width: '2px',
@@ -41,7 +41,7 @@ export default function Experience() {
                   transition={{ duration: 0.35, delay: i * 0.1, type: 'spring', stiffness: 300 }}
                   style={{
                     position: 'absolute',
-                    left: '-2rem',
+                    left: '-2.5rem',
                     top: '1.1rem',
                     width: '14px',
                     height: '14px',
