@@ -1,0 +1,31 @@
+import {
+  SiPhp,
+  SiHtml5,
+  SiCss,
+  SiMysql,
+  SiJavascript,
+  SiCplusplus,
+  SiPython,
+  SiBootstrap,
+  SiLaravel,
+  SiVuedotjs,
+  SiTailwindcss,
+  SiSvelte,
+  SiGit,
+} from 'react-icons/si'
+
+export const skills = [
+  { name: 'PHP', icon: SiPhp, color: '#8892BF' },
+  { name: 'HTML', icon: SiHtml5, color: '#E34F26' },
+  { name: 'CSS', icon: SiCss, color: '#1572B6' },
+  { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+  { name: 'C++', icon: SiCplusplus, color: '#00599C' },
+  { name: 'Python', icon: SiPython, color: '#3776AB' },
+  { name: 'Bootstrap', icon: SiBootstrap, color: '#7952B3' },
+  { name: 'Laravel', icon: SiLaravel, color: '#FF2D20' },
+  { name: 'Vue.js', icon: SiVuedotjs, color: '#42B883' },
+  { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+  { name: 'Svelte', icon: SiSvelte, color: '#FF3E00' },
+  { name: 'Git', icon: SiGit, color: '#F05032' },
+]
