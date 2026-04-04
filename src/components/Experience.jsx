@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { workExperience } from '../data/experience'
 import { Briefcase } from 'lucide-react'
+import AnimatedTitle from './AnimatedTitle'
 
 export default function Experience() {
   return (
@@ -14,7 +15,7 @@ export default function Experience() {
           style={{ marginBottom: '2.5rem' }}
         >
           <span className="section-label">Experience</span>
-          <h2 className="section-title">Where I&apos;ve Worked</h2>
+          <AnimatedTitle className="section-title">Where I&apos;ve Worked</AnimatedTitle>
         </motion.div>
 
         {/* Timeline */}

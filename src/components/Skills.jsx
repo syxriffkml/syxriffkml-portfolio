@@ -1,14 +1,30 @@
-import { motion } from 'motion/react'
+import { useEffect, useRef } from 'react'
+import { motion, useAnimate } from 'motion/react'
 import { skills } from '../data/skills'
+import AnimatedTitle from './AnimatedTitle'
 
 function MarqueeRow({ items, direction = 1, duration = 28 }) {
   const doubled = [...items, ...items]
+  const [scope, animate] = useAnimate()
+  const animRef = useRef(null)
+
+  useEffect(() => {
+    animRef.current = animate(
+      scope.current,
+      { x: direction === 1 ? ['0%', '-50%'] : ['-50%', '0%'] },
+      { duration, ease: 'linear', repeat: Infinity }
+    )
+  }, [])
+
   return (
-    <div style={{ overflow: 'hidden', width: '100%' }}>
-      <motion.div
+    <div
+      style={{ overflow: 'hidden', width: '100%' }}
+      onMouseEnter={() => animRef.current?.pause()}
+      onMouseLeave={() => animRef.current?.play()}
+    >
+      <div
+        ref={scope}
         style={{ display: 'flex', gap: '0.75rem', width: 'max-content' }}
-        animate={{ x: direction === 1 ? ['0%', '-50%'] : ['-50%', '0%'] }}
-        transition={{ duration, ease: 'linear', repeat: Infinity }}
       >
         {doubled.map((skill, i) => {
           const Icon = skill.icon
@@ -39,7 +55,7 @@ function MarqueeRow({ items, direction = 1, duration = 28 }) {
             </div>
           )
         })}
-      </motion.div>
+      </div>
     </div>
   )
 }
@@ -58,7 +74,7 @@ export default function Skills() {
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
           <span className="section-label">Skills</span>
-          <h2 className="section-title">My Tech Stack</h2>
+          <AnimatedTitle className="section-title">My Tech Stack</AnimatedTitle>
           <p style={{
             fontFamily: 'var(--font-body)',
             fontSize: '1rem',

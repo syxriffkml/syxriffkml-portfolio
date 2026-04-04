@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { projects } from '../data/projects'
 import { Github, ExternalLink, ImageIcon } from 'lucide-react'
+import AnimatedTitle from './AnimatedTitle'
 
 const containerVariants = {
   hidden: {},
@@ -172,7 +173,7 @@ export default function Projects() {
           style={{ marginBottom: '2.5rem' }}
         >
           <span className="section-label">Projects</span>
-          <h2 className="section-title">Things I&apos;ve Built</h2>
+          <AnimatedTitle className="section-title">Things I&apos;ve Built</AnimatedTitle>
         </motion.div>
 
         <motion.div

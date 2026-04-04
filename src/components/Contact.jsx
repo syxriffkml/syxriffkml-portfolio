@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { Send, Mail, Linkedin } from 'lucide-react'
 import { SiGithub, SiInstagram, SiX } from 'react-icons/si'
+import AnimatedTitle from './AnimatedTitle'
 
 const socials = [
   {
@@ -84,7 +85,7 @@ export default function Contact() {
           style={{ marginBottom: '2.5rem' }}
         >
           <span className="section-label">Contact</span>
-          <h2 className="section-title">Let&apos;s Work Together ✨</h2>
+          <AnimatedTitle className="section-title">Let's Work Together ✨</AnimatedTitle>
           <p style={{
             fontFamily: 'var(--font-body)',
             fontSize: '1rem',
