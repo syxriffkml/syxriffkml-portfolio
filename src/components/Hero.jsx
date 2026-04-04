@@ -1,4 +1,5 @@
-import { motion } from 'motion/react'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { Download, ArrowDown } from 'lucide-react'
 
 const sparkles = [
@@ -8,6 +9,17 @@ const sparkles = [
   { top: '80%', right: '10%', size: 24, delay: 0.9 },
   { top: '50%', left: '50%', size: 12, delay: 1.2 },
   { top: '35%', left: '40%', size: 10, delay: 0.5 },
+]
+
+const codeSnippets = [
+  { text: '<div />', top: '15%', left: '3%', delay: 0, rotate: -12, duration: 6 },
+  { text: '{ }', top: '72%', left: '2%', delay: 1, rotate: 8, duration: 7 },
+  { text: '( ) =>', top: '30%', right: '2%', delay: 0.5, rotate: 10, duration: 8 },
+  { text: 'useState', top: '62%', right: '3%', delay: 1.5, rotate: -8, duration: 6.5 },
+  { text: '</>', top: '85%', left: '30%', delay: 0.8, rotate: 5, duration: 7.5 },
+  { text: 'npm i', top: '8%', right: '22%', delay: 0.3, rotate: -6, duration: 9 },
+  { text: 'flex', top: '45%', left: '1%', delay: 1.2, rotate: 14, duration: 6 },
+  { text: ':root', top: '90%', right: '18%', delay: 0.6, rotate: -10, duration: 8 },
 ]
 
 function Sparkle({ style, size, delay }) {
@@ -29,7 +41,55 @@ function Sparkle({ style, size, delay }) {
   )
 }
 
+function CodeSnippet({ text, top, left, right, delay, rotate, duration }) {
+  return (
+    <motion.div
+      style={{
+        position: 'absolute',
+        top,
+        left,
+        right,
+        pointerEvents: 'none',
+        fontFamily: 'monospace',
+        fontSize: '0.78rem',
+        fontWeight: 700,
+        color: 'var(--color-primary-dark)',
+        background: 'var(--color-tag)',
+        border: '1.5px solid var(--color-border)',
+        borderRadius: '0.5rem',
+        padding: '0.2rem 0.55rem',
+        opacity: 0.7,
+        rotate,
+        zIndex: 0,
+      }}
+      animate={{
+        y: [0, -10, 0],
+        opacity: [0.5, 0.85, 0.5],
+      }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        delay,
+        ease: 'easeInOut',
+      }}
+    >
+      {text}
+    </motion.div>
+  )
+}
+
 export default function Hero() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+
+  // Parallax transforms — aggressive, blobs fully slide off by the time About is visible
+  const blob1Y = useTransform(scrollYProgress, [0, 1], ['0%', '-160%'])
+  const blob2Y = useTransform(scrollYProgress, [0, 1], ['0%', '-120%'])
+  const blob3Y = useTransform(scrollYProgress, [0, 1], ['0%', '-200%'])
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -37,6 +97,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -51,29 +112,55 @@ export default function Hero() {
         <Sparkle key={i} style={{ top: s.top, left: s.left, right: s.right }} size={s.size} delay={s.delay} />
       ))}
 
-      {/* Background blobs */}
-      <div style={{
-        position: 'absolute',
-        top: '-10%',
-        right: '-5%',
-        width: '40vw',
-        height: '40vw',
-        borderRadius: '60% 40% 55% 45% / 50% 55% 45% 50%',
-        background: 'var(--color-surface)',
-        zIndex: 0,
-        opacity: 0.7,
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '-8%',
-        left: '-8%',
-        width: '30vw',
-        height: '30vw',
-        borderRadius: '45% 55% 40% 60% / 55% 45% 55% 45%',
-        background: 'var(--color-surface-2)',
-        zIndex: 0,
-        opacity: 0.5,
-      }} />
+      {/* Floating code snippets */}
+      {codeSnippets.map((s, i) => (
+        <CodeSnippet key={i} {...s} />
+      ))}
+
+      {/* Background blobs — with parallax */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          top: '-10%',
+          right: '-5%',
+          width: '40vw',
+          height: '40vw',
+          borderRadius: '60% 40% 55% 45% / 50% 55% 45% 50%',
+          background: 'var(--color-surface)',
+          zIndex: 0,
+          opacity: 0.7,
+          y: blob1Y,
+        }}
+      />
+      <motion.div
+        style={{
+          position: 'absolute',
+          bottom: '-8%',
+          left: '-8%',
+          width: '30vw',
+          height: '30vw',
+          borderRadius: '45% 55% 40% 60% / 55% 45% 55% 45%',
+          background: 'var(--color-surface-2)',
+          zIndex: 0,
+          opacity: 0.5,
+          y: blob2Y,
+        }}
+      />
+      {/* Third accent blob */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          top: '40%',
+          left: '30%',
+          width: '18vw',
+          height: '18vw',
+          borderRadius: '50% 50% 40% 60% / 60% 40% 60% 40%',
+          background: 'var(--color-accent-2)',
+          zIndex: 0,
+          opacity: 0.12,
+          y: blob3Y,
+        }}
+      />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{
@@ -174,14 +261,16 @@ export default function Hero() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 style={{
-                  background: 'transparent',
+                  background: 'rgba(255, 255, 255, 0.25)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
                   color: 'var(--color-primary-dark)',
                   fontFamily: 'var(--font-display)',
                   fontWeight: 600,
                   fontSize: '1rem',
                   padding: '0.75rem 1.75rem',
                   borderRadius: '999px',
-                  border: '2px solid var(--color-primary)',
+                  border: '1.5px solid var(--color-primary)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
