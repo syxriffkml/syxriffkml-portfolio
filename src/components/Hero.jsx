@@ -228,8 +228,7 @@ export default function Hero() {
                 marginBottom: '0.5rem',
               }}
             >
-              Syariff<br />
-              <span style={{ color: 'var(--color-primary-dark)' }}>Kamil</span>
+              Syariff <span style={{ color: 'var(--color-primary-dark)' }}>Kamil</span>
             </motion.h1>
 
             <motion.p
@@ -253,56 +252,31 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
+              className="hero-buttons"
               style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
             >
-              <motion.div
+              <motion.button
+                onClick={scrollToProjects}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                style={{ position: 'relative', display: 'inline-block', cursor: 'pointer' }}
+                style={{
+                  background: 'var(--color-accent)',
+                  color: '#fff',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 600,
+                  fontSize: '1rem',
+                  padding: '0.75rem 1.75rem',
+                  borderRadius: '999px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  boxShadow: '0 4px 20px rgba(255,127,110,0.35)',
+                }}
               >
-                {/* Cat peeking from behind the button */}
-                <motion.img
-                  src="/cute_chibi_cat_1.png"
-                  alt=""
-                  aria-hidden="true"
-                  initial={{ opacity: 0, y: 10, scale: 0.7 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 0.7 }}
-                  style={{
-                    position: 'absolute',
-                    top: '-45px',
-                    left: '10px',
-                    width: '64px',
-                    height: '64px',
-                    objectFit: 'contain',
-                    zIndex: 0,
-                    pointerEvents: 'none',
-                    filter: 'drop-shadow(0 2px 6px rgba(183,153,245,0.4))',
-                  }}
-                />
-                <button
-                  onClick={scrollToProjects}
-                  style={{
-                    position: 'relative',
-                    zIndex: 1,
-                    background: 'var(--color-accent)',
-                    color: '#fff',
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    padding: '0.75rem 1.75rem',
-                    borderRadius: '999px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    boxShadow: '0 4px 20px rgba(255,127,110,0.35)',
-                  }}
-                >
-                  View Projects <ArrowDown size={16} />
-                </button>
-              </motion.div>
+                View Projects <ArrowDown size={16} />
+              </motion.button>
 
               <motion.a
                 href="/resume.pdf"
@@ -431,6 +405,9 @@ export default function Hero() {
             order: -1;
           }
           .hero-grid button, .hero-grid a {
+            justify-content: center;
+          }
+          .hero-buttons {
             justify-content: center;
           }
         }
