@@ -254,7 +254,7 @@ export default function About() {
                   <div
                     key={label}
                     style={{
-                      background: "#fff",
+                      background: "var(--color-card)",
                       border: "2px solid var(--color-border)",
                       borderRadius: "1.25rem",
                       padding: "0.75rem 1.25rem",
@@ -341,7 +341,7 @@ export default function About() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: i * 0.1 }}
                       style={{
-                        background: "#fff",
+                        background: "var(--color-card)",
                         border: "2px solid var(--color-border)",
                         borderRadius: "1.25rem",
                         padding: "0.9rem 1.1rem",

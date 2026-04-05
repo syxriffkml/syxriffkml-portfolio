@@ -37,7 +37,7 @@ export default function Navbar() {
         right: 0,
         zIndex: 50,
         transition: 'background 0.3s, box-shadow 0.3s',
-        background: scrolled ? 'rgba(250,247,242,0.85)' : 'transparent',
+        background: scrolled ? 'var(--color-navbar-scrolled)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         boxShadow: scrolled ? '0 2px 20px rgba(183,153,245,0.12)' : 'none',
       }}
@@ -128,7 +128,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
             style={{
-              background: 'rgba(250,247,242,0.97)',
+              background: 'var(--color-navbar-mobile)',
               backdropFilter: 'blur(16px)',
               borderTop: '1px solid var(--color-border)',
               padding: '1rem 1.5rem 1.5rem',

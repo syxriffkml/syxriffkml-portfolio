@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer style={{
-      background: 'var(--color-text)',
+      background: 'var(--color-footer-bg)',
       padding: '1.75rem 0',
       textAlign: 'center',
     }}>

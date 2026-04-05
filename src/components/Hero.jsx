@@ -374,7 +374,7 @@ export default function Hero() {
                 bottom: '12%',
                 left: '-2%',
                 zIndex: 2,
-                background: '#fff',
+                background: 'var(--color-card)',
                 border: '2px solid var(--color-border)',
                 borderRadius: '1.25rem',
                 padding: '0.6rem 1rem',

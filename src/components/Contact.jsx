@@ -37,7 +37,7 @@ const inputStyle = {
   fontWeight: 600,
   fontSize: "0.95rem",
   color: "var(--color-text)",
-  background: "#fff",
+  background: "var(--color-card)",
   border: "2px solid var(--color-border)",
   borderRadius: "1rem",
   padding: "0.75rem 1rem",
@@ -143,7 +143,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             style={{
-              background: "#fff",
+              background: "var(--color-card)",
               border: "2px solid var(--color-border)",
               borderRadius: "1.75rem",
               padding: "2rem",
@@ -296,7 +296,7 @@ export default function Contact() {
           >
             <div
               style={{
-                background: "#fff",
+                background: "var(--color-card)",
                 border: "2px solid var(--color-border)",
                 borderRadius: "1.75rem",
                 padding: "1.5rem",
@@ -354,7 +354,7 @@ export default function Contact() {
                     display: "flex",
                     alignItems: "center",
                     gap: "1rem",
-                    background: "#fff",
+                    background: "var(--color-card)",
                     border: "2px solid var(--color-border)",
                     borderRadius: "1.25rem",
                     padding: "0.9rem 1.25rem",

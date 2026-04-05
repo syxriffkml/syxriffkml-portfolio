@@ -19,7 +19,7 @@ function ProjectCard({ project }) {
       variants={cardVariants}
       whileHover={{ y: -6, boxShadow: '0 20px 48px rgba(183,153,245,0.18)' }}
       style={{
-        background: '#fff',
+        background: 'var(--color-card)',
         border: '2px solid var(--color-border)',
         borderRadius: '1.75rem',
         overflow: 'hidden',

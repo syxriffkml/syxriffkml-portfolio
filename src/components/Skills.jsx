@@ -35,7 +35,7 @@ function MarqueeRow({ items, direction = 1, duration = 28 }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                background: '#fff',
+                background: 'var(--color-card)',
                 border: '2px solid var(--color-border)',
                 borderRadius: '999px',
                 padding: '0.55rem 1.1rem',

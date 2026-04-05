@@ -22,7 +22,7 @@ export default function CatPaletteButton({ onClick }) {
 
   const bubbleStyle = {
     position: 'relative',
-    background: '#fff',
+    background: 'var(--color-card)',
     border: '2px solid var(--color-border)',
     borderRadius: '1.25rem',
     padding: '0.45rem 1rem',

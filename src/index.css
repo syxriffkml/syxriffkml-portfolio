@@ -3,23 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --color-bg:           #FAF7F2;
-  --color-surface:      #F0EAF8;
-  --color-surface-2:    #E8DFFB;
-  --color-primary:      #B799F5;
-  --color-primary-dark: #7C4DFF;
-  --color-accent:       #FF7F6E;
-  --color-accent-2:     #FFD166;
-  --color-text:         #2D1F4E;
-  --color-text-muted:   #7B6A99;
-  --color-border:       #D8CAFF;
-  --color-tag:          #EDE4FF;
+  --color-bg: #faf7f2;
+  --color-surface: #f0eaf8;
+  --color-surface-2: #e8dffb;
+  --color-card: #ffffff;
+  --color-primary: #b799f5;
+  --color-primary-dark: #7c4dff;
+  --color-accent: #ff7f6e;
+  --color-accent-2: #ffd166;
+  --color-text: #2d1f4e;
+  --color-text-muted: #7b6a99;
+  --color-border: #d8caff;
+  --color-tag: #ede4ff;
+  --color-footer-bg: #2d1f4e;
+  --color-navbar-scrolled: rgba(250, 247, 242, 0.85);
+  --color-navbar-mobile: rgba(250, 247, 242, 0.97);
 
-  --font-display: 'Fredoka', sans-serif;
-  --font-body: 'Nunito', sans-serif;
+  --font-display: "Fredoka", sans-serif;
+  --font-body: "Nunito", sans-serif;
 }
 
-*, *::before, *::after {
+[data-theme="dark"] {
+  --color-bg: #0e0a1a;
+  --color-surface: #1a1230;
+  --color-surface-2: #261b45;
+  --color-card: #1a1230;
+  --color-primary: #b799f5;
+  --color-primary-dark: #c4aaff;
+  --color-accent: #ff7f6e;
+  --color-accent-2: #ffd166;
+  --color-text: #ede6ff;
+  --color-text-muted: #9b89ba;
+  --color-border: #3a2860;
+  --color-tag: #231848;
+  --color-footer-bg: #0a0714;
+  --color-navbar-scrolled: rgba(14, 10, 26, 0.85);
+  --color-navbar-mobile: rgba(14, 10, 26, 0.97);
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -35,6 +59,9 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ::selection {
@@ -44,7 +71,7 @@ body {
 
 /* Noise texture overlay */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   z-index: 999;
@@ -94,23 +121,58 @@ section {
 
 /* Pastel RGB cycling animations */
 @keyframes pastel-rgb-cat {
-  0%   { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #B799F5) drop-shadow(0 0 3px #B799F5); }
-  16%  { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #FFB3D9) drop-shadow(0 0 3px #FFB3D9); }
-  33%  { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #99D6FF) drop-shadow(0 0 3px #99D6FF); }
-  50%  { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #A8F0D8) drop-shadow(0 0 3px #A8F0D8); }
-  66%  { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #FFE599) drop-shadow(0 0 3px #FFE599); }
-  83%  { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #FFBFB3) drop-shadow(0 0 3px #FFBFB3); }
-  100% { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) drop-shadow(0 0 3px #B799F5) drop-shadow(0 0 3px #B799F5); }
+  0% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #b799f5) drop-shadow(0 0 3px #b799f5);
+  }
+  16% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #ffb3d9) drop-shadow(0 0 3px #ffb3d9);
+  }
+  33% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #99d6ff) drop-shadow(0 0 3px #99d6ff);
+  }
+  50% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #a8f0d8) drop-shadow(0 0 3px #a8f0d8);
+  }
+  66% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #ffe599) drop-shadow(0 0 3px #ffe599);
+  }
+  83% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #ffbfb3) drop-shadow(0 0 3px #ffbfb3);
+  }
+  100% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+      drop-shadow(0 0 3px #b799f5) drop-shadow(0 0 3px #b799f5);
+  }
 }
 
 @keyframes pastel-rgb-label {
-  0%   { box-shadow: 0 0 0 2px #B799F5; }
-  16%  { box-shadow: 0 0 0 2px #FFB3D9; }
-  33%  { box-shadow: 0 0 0 2px #99D6FF; }
-  50%  { box-shadow: 0 0 0 2px #A8F0D8; }
-  66%  { box-shadow: 0 0 0 2px #FFE599; }
-  83%  { box-shadow: 0 0 0 2px #FFBFB3; }
-  100% { box-shadow: 0 0 0 2px #B799F5; }
+  0% {
+    box-shadow: 0 0 0 2px #b799f5;
+  }
+  16% {
+    box-shadow: 0 0 0 2px #ffb3d9;
+  }
+  33% {
+    box-shadow: 0 0 0 2px #99d6ff;
+  }
+  50% {
+    box-shadow: 0 0 0 2px #a8f0d8;
+  }
+  66% {
+    box-shadow: 0 0 0 2px #ffe599;
+  }
+  83% {
+    box-shadow: 0 0 0 2px #ffbfb3;
+  }
+  100% {
+    box-shadow: 0 0 0 2px #b799f5;
+  }
 }
 
 .pastel-rgb-cat {

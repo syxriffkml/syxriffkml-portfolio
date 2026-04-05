@@ -84,7 +84,7 @@ function ExperienceCard({ job, cat, motionProps }) {
       {...motionProps}
       style={{
         position: 'relative',
-        background: '#fff',
+        background: 'var(--color-card)',
         border: '2px solid var(--color-border)',
         borderRadius: '1.5rem',
         padding: '1.5rem',
@@ -184,7 +184,7 @@ export default function Experience() {
                   style={{
                     position: 'absolute', left: '-2.5rem', top: '1.1rem',
                     width: '14px', height: '14px', borderRadius: '50%',
-                    background: 'var(--color-primary)', border: '3px solid #fff',
+                    background: 'var(--color-primary)', border: '3px solid var(--color-card)',
                     boxShadow: '0 0 0 2px var(--color-primary)',
                   }}
                 />

@@ -14,6 +14,12 @@ import CatPaletteButton from './components/CatPaletteButton'
 
 export default function App() {
   const [paletteOpen, setPaletteOpen] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark')
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light')
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
 
   useEffect(() => {
     const onKey = (e) => {
@@ -41,7 +47,7 @@ export default function App() {
       <Footer />
 <CursorFollower />
       <CatPaletteButton onClick={() => setPaletteOpen(true)} />
-      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} darkMode={darkMode} onToggleDark={() => setDarkMode(d => !d)} />
     </>
   )
 }

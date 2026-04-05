@@ -1,26 +1,27 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { Home, User, Zap, FolderOpen, Briefcase, Mail, Download, Linkedin } from 'lucide-react'
+import { Home, User, Zap, FolderOpen, Briefcase, Mail, Download, Linkedin, Moon, Sun } from 'lucide-react'
 import { SiGithub, SiInstagram } from 'react-icons/si'
 
-const commands = [
-  { group: 'Navigate', label: 'Home', icon: Home, action: () => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }) },
-  { group: 'Navigate', label: 'About', icon: User, action: () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) },
-  { group: 'Navigate', label: 'Skills', icon: Zap, action: () => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }) },
-  { group: 'Navigate', label: 'Projects', icon: FolderOpen, action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) },
-  { group: 'Navigate', label: 'Experience', icon: Briefcase, action: () => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' }) },
-  { group: 'Navigate', label: 'Contact', icon: Mail, action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
-  { group: 'Actions', label: 'Download CV', icon: Download, action: () => window.open('/resume.pdf', '_blank') },
-  { group: 'Actions', label: 'Open GitHub', icon: SiGithub, action: () => window.open('https://github.com/syxriffkml', '_blank') },
-  { group: 'Actions', label: 'Open LinkedIn', icon: Linkedin, action: () => window.open('https://www.linkedin.com/in/syxriffkml/', '_blank') },
-  { group: 'Actions', label: 'Open Instagram', icon: SiInstagram, action: () => window.open('https://instagram.com/syxriffkml', '_blank') },
-]
-
-export default function CommandPalette({ open, onClose }) {
+export default function CommandPalette({ open, onClose, darkMode, onToggleDark }) {
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState(0)
   const inputRef = useRef(null)
   const itemRefs = useRef([])
+
+  const commands = [
+    { group: 'Navigate', label: 'Home', icon: Home, action: () => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }) },
+    { group: 'Navigate', label: 'About', icon: User, action: () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) },
+    { group: 'Navigate', label: 'Skills', icon: Zap, action: () => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }) },
+    { group: 'Navigate', label: 'Projects', icon: FolderOpen, action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) },
+    { group: 'Navigate', label: 'Experience', icon: Briefcase, action: () => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' }) },
+    { group: 'Navigate', label: 'Contact', icon: Mail, action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
+    { group: 'Actions', label: darkMode ? 'Light Mode' : 'Dark Mode', icon: darkMode ? Sun : Moon, action: onToggleDark },
+    { group: 'Actions', label: 'Download CV', icon: Download, action: () => window.open('/resume.pdf', '_blank') },
+    { group: 'Actions', label: 'Open GitHub', icon: SiGithub, action: () => window.open('https://github.com/syxriffkml', '_blank') },
+    { group: 'Actions', label: 'Open LinkedIn', icon: Linkedin, action: () => window.open('https://www.linkedin.com/in/syxriffkml/', '_blank') },
+    { group: 'Actions', label: 'Open Instagram', icon: SiInstagram, action: () => window.open('https://instagram.com/syxriffkml', '_blank') },
+  ]
 
   const filtered = query
     ? commands.filter(c => c.label.toLowerCase().includes(query.toLowerCase()))
@@ -121,7 +122,7 @@ export default function CommandPalette({ open, onClose }) {
               transition={{ type: 'spring', stiffness: 320, damping: 28 }}
               style={{
                 width: 'min(520px, 90vw)',
-                background: '#fff',
+                background: 'var(--color-card)',
                 borderRadius: '1rem',
                 border: '2px solid var(--color-border)',
                 boxShadow: '0 24px 64px rgba(124,77,255,0.18)',
@@ -226,13 +227,14 @@ export default function CommandPalette({ open, onClose }) {
                             height: '30px',
                             borderRadius: '999px',
                             background: selected === globalIndex ? 'var(--color-primary)' : 'var(--color-surface)',
+                            color: selected === globalIndex ? '#fff' : 'var(--color-primary-dark)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             flexShrink: 0,
-                            transition: 'background 0.15s',
+                            transition: 'background 0.15s, color 0.15s',
                           }}>
-                            <Icon size={14} color={selected === globalIndex ? '#fff' : 'var(--color-primary-dark)'} />
+                            <Icon size={14} style={{ color: 'inherit' }} />
                           </div>
                           <span style={{
                             fontFamily: 'var(--font-display)',
