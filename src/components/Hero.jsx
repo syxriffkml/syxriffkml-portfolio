@@ -12,14 +12,14 @@ const sparkles = [
 ]
 
 const codeSnippets = [
-  { text: '<div />', top: '15%', left: '3%', delay: 0, rotate: -12, duration: 6 },
-  { text: '{ }', top: '72%', left: '2%', delay: 1, rotate: 8, duration: 7 },
-  { text: '( ) =>', top: '30%', right: '2%', delay: 0.5, rotate: 10, duration: 8 },
-  { text: 'useState', top: '62%', right: '3%', delay: 1.5, rotate: -8, duration: 6.5 },
-  { text: '</>', top: '85%', left: '30%', delay: 0.8, rotate: 5, duration: 7.5 },
-  { text: 'npm i', top: '8%', right: '22%', delay: 0.3, rotate: -6, duration: 9 },
-  { text: 'flex', top: '45%', left: '1%', delay: 1.2, rotate: 14, duration: 6 },
-  { text: ':root', top: '90%', right: '18%', delay: 0.6, rotate: -10, duration: 8 },
+  { text: '<div />', top: '15%', left: '3%', delay: 0, rotate: -12, duration: 2.5 },
+  { text: '{ }', top: '72%', left: '2%', delay: 0.4, rotate: 8, duration: 2 },
+  { text: 'useEffect', top: '30%', right: '2%', delay: 0.2, rotate: 10, duration: 2.8 },
+  { text: 'useState', top: '62%', right: '3%', delay: 0.6, rotate: -8, duration: 2.2 },
+  { text: '</>', top: '85%', left: '30%', delay: 0.3, rotate: 5, duration: 2.5 },
+  { text: 'npm install', top: '8%', right: '22%', delay: 0.1, rotate: -6, duration: 3 },
+  { text: 'flex', top: '45%', left: '1%', delay: 0.5, rotate: 14, duration: 2 },
+  { text: ':root', top: '90%', right: '18%', delay: 0.7, rotate: -10, duration: 2.6 },
 ]
 
 function Sparkle({ style, size, delay }) {
@@ -29,9 +29,9 @@ function Sparkle({ style, size, delay }) {
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      style={{ position: 'absolute', ...style, pointerEvents: 'none' }}
+      style={{ position: 'absolute', ...style, pointerEvents: 'none', zIndex: 1 }}
       animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 0.9, 1], opacity: [0.6, 1, 0.6] }}
-      transition={{ duration: 3.5, repeat: Infinity, delay, ease: 'easeInOut' }}
+      transition={{ duration: 1.5, repeat: Infinity, delay, ease: 'easeInOut' }}
     >
       <path
         d="M12 2 L13.5 9.5 L21 12 L13.5 14.5 L12 22 L10.5 14.5 L3 12 L10.5 9.5 Z"
@@ -50,6 +50,7 @@ function CodeSnippet({ text, top, left, right, delay, rotate, duration }) {
         left,
         right,
         pointerEvents: 'none',
+        zIndex: 1,
         fontFamily: 'monospace',
         fontSize: '0.78rem',
         fontWeight: 700,
@@ -60,7 +61,6 @@ function CodeSnippet({ text, top, left, right, delay, rotate, duration }) {
         padding: '0.2rem 0.55rem',
         opacity: 0.7,
         rotate,
-        zIndex: 0,
       }}
       animate={{
         y: [0, -10, 0],
@@ -127,7 +127,7 @@ export default function Hero() {
           height: '40vw',
           borderRadius: '60% 40% 55% 45% / 50% 55% 45% 50%',
           background: 'var(--color-surface)',
-          zIndex: 0,
+          zIndex: -1,
           opacity: 0.7,
           y: blob1Y,
         }}
@@ -141,7 +141,7 @@ export default function Hero() {
           height: '30vw',
           borderRadius: '45% 55% 40% 60% / 55% 45% 55% 45%',
           background: 'var(--color-surface-2)',
-          zIndex: 0,
+          zIndex: -1,
           opacity: 0.5,
           y: blob2Y,
         }}
@@ -156,7 +156,7 @@ export default function Hero() {
           height: '18vw',
           borderRadius: '50% 50% 40% 60% / 60% 40% 60% 40%',
           background: 'var(--color-accent-2)',
-          zIndex: 0,
+          zIndex: -1,
           opacity: 0.12,
           y: blob3Y,
         }}
@@ -345,7 +345,7 @@ export default function Hero() {
             {/* Floating badge */}
             <motion.div
               animate={{ rotate: [-3, 3, -3] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
               style={{
                 position: 'absolute',
                 bottom: '12%',
