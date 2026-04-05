@@ -50,10 +50,9 @@ export default function CatPaletteButton({ onClick }) {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       whileHover="hover"
+      className="cat-palette-btn"
       style={{
         position: 'fixed',
-        bottom: '2rem',
-        right: '2rem',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -64,7 +63,7 @@ export default function CatPaletteButton({ onClick }) {
       <motion.div
         variants={{ hover: { scale: 1.06, y: -4 } }}
         onClick={onClick}
-        style={{ ...bubbleStyle, marginBottom: '20px' }}
+        style={{ ...bubbleStyle, marginBottom: '10px' }}
       >
         <span style={labelStyle}>⌨️ Ctrl K</span>
         {/* tail — centered bottom, pointing down */}
@@ -98,7 +97,7 @@ export default function CatPaletteButton({ onClick }) {
               style={{
                 ...bubbleStyle,
                 position: 'absolute',
-                right: 'calc(100% + 10px)',
+                right: 'calc(100% + 3px)',
                 bottom: '12px',
               }}
             >
