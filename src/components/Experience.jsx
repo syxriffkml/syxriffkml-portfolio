@@ -14,7 +14,24 @@ export default function Experience() {
           transition={{ duration: 0.55, ease: 'easeOut' }}
           style={{ marginBottom: '2.5rem' }}
         >
-          <span className="section-label">Experience</span>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <img
+              src="/cute_chibi_cat_2.png"
+              alt=""
+              aria-hidden="true"
+              className="pastel-rgb-cat"
+              style={{
+                position: 'absolute',
+                top: '-50px',
+                left: '10px',
+                width: '58px',
+                height: '58px',
+                objectFit: 'contain',
+                pointerEvents: 'none',
+              }}
+            />
+            <span className="section-label pastel-rgb-label" style={{ position: 'relative', zIndex: 1 }}>Experience</span>
+          </div>
           <AnimatedTitle className="section-title">Where I&apos;ve Worked</AnimatedTitle>
         </motion.div>
 

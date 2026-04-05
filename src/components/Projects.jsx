@@ -172,7 +172,24 @@ export default function Projects() {
           transition={{ duration: 0.55, ease: 'easeOut' }}
           style={{ marginBottom: '2.5rem' }}
         >
-          <span className="section-label">Projects</span>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <img
+              src="/cute_chibi_cat_2.png"
+              alt=""
+              aria-hidden="true"
+              className="pastel-rgb-cat"
+              style={{
+                position: 'absolute',
+                top: '-50px',
+                left: '10px',
+                width: '58px',
+                height: '58px',
+                objectFit: 'contain',
+                pointerEvents: 'none',
+              }}
+            />
+            <span className="section-label pastel-rgb-label" style={{ position: 'relative', zIndex: 1 }}>Projects</span>
+          </div>
           <AnimatedTitle className="section-title">Things I&apos;ve Built</AnimatedTitle>
         </motion.div>
 

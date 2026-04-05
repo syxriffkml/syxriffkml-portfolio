@@ -173,24 +173,47 @@ export default function Hero() {
         >
           {/* Left: Text */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0 }}
-              style={{
-                display: 'inline-block',
-                background: 'var(--color-tag)',
-                color: 'var(--color-primary-dark)',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 600,
-                fontSize: '1rem',
-                padding: '0.3rem 1rem',
-                borderRadius: '999px',
-                marginBottom: '1rem',
-              }}
-            >
-              hey, i&apos;m 👋
-            </motion.div>
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              <motion.img
+                src="/cute_chibi_cat_1.png"
+                alt=""
+                aria-hidden="true"
+                initial={{ opacity: 0, y: 12, scale: 0.7 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 0.15 }}
+                style={{
+                  position: 'absolute',
+                  top: '-42px',
+                  left: '0px',
+                  width: '58px',
+                  height: '58px',
+                  objectFit: 'contain',
+                  zIndex: 0,
+                  pointerEvents: 'none',
+                  filter: 'drop-shadow(0 2px 6px rgba(183,153,245,0.4))',
+                }}
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0 }}
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'inline-block',
+                  background: 'var(--color-tag)',
+                  color: 'var(--color-primary-dark)',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 600,
+                  fontSize: '1rem',
+                  padding: '0.3rem 1rem',
+                  borderRadius: '999px',
+                  marginBottom: '1rem',
+                }}
+              >
+                hey, i&apos;m 👋
+              </motion.div>
+            </div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -232,28 +255,54 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.45 }}
               style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
             >
-              <motion.button
-                onClick={scrollToProjects}
+              <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                style={{
-                  background: 'var(--color-accent)',
-                  color: '#fff',
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  padding: '0.75rem 1.75rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  boxShadow: '0 4px 20px rgba(255,127,110,0.35)',
-                }}
+                style={{ position: 'relative', display: 'inline-block', cursor: 'pointer' }}
               >
-                View Projects <ArrowDown size={16} />
-              </motion.button>
+                {/* Cat peeking from behind the button */}
+                <motion.img
+                  src="/cute_chibi_cat_1.png"
+                  alt=""
+                  aria-hidden="true"
+                  initial={{ opacity: 0, y: 10, scale: 0.7 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 0.7 }}
+                  style={{
+                    position: 'absolute',
+                    top: '-45px',
+                    left: '10px',
+                    width: '64px',
+                    height: '64px',
+                    objectFit: 'contain',
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                    filter: 'drop-shadow(0 2px 6px rgba(183,153,245,0.4))',
+                  }}
+                />
+                <button
+                  onClick={scrollToProjects}
+                  style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    background: 'var(--color-accent)',
+                    color: '#fff',
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    padding: '0.75rem 1.75rem',
+                    borderRadius: '999px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    boxShadow: '0 4px 20px rgba(255,127,110,0.35)',
+                  }}
+                >
+                  View Projects <ArrowDown size={16} />
+                </button>
+              </motion.div>
 
               <motion.a
                 href="/resume.pdf"

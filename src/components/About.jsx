@@ -6,8 +6,8 @@ import { GraduationCap } from "lucide-react";
 const floatingTags = [
   {
     text: "programmer 💻",
-    top: "4%",
-    left: "2%",
+    top: "65%",
+    left: "10%",
     rotate: -8,
     color: "#FF7F6E",
     bg: "#FFF0EE",
@@ -72,8 +72,8 @@ const floatingTags = [
   },
   {
     text: "problem solver",
-    top: "65%",
-    left: "10%",
+    top: "60%",
+    left: "35%",
     rotate: -6,
     color: "#10B981",
     bg: "#ECFDF5",
@@ -189,7 +189,24 @@ export default function About() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          <span className="section-label">About Me</span>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <img
+              src="/cute_chibi_cat_2.png"
+              alt=""
+              aria-hidden="true"
+              className="pastel-rgb-cat"
+              style={{
+                position: 'absolute',
+                top: '-50px',
+                left: '10px',
+                width: '58px',
+                height: '58px',
+                objectFit: 'contain',
+                pointerEvents: 'none',
+              }}
+            />
+            <span className="section-label pastel-rgb-label" style={{ position: 'relative', zIndex: 1 }}>About Me</span>
+          </div>
 
           <div
             style={{

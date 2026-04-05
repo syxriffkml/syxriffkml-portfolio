@@ -73,7 +73,24 @@ export default function Skills() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <span className="section-label">Skills</span>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <img
+              src="/cute_chibi_cat_2.png"
+              alt=""
+              aria-hidden="true"
+              className="pastel-rgb-cat"
+              style={{
+                position: 'absolute',
+                top: '-50px',
+                left: '10px',
+                width: '58px',
+                height: '58px',
+                objectFit: 'contain',
+                pointerEvents: 'none',
+              }}
+            />
+            <span className="section-label pastel-rgb-label" style={{ position: 'relative', zIndex: 1 }}>Skills</span>
+          </div>
           <AnimatedTitle className="section-title">My Tech Stack</AnimatedTitle>
           <p style={{
             fontFamily: 'var(--font-body)',

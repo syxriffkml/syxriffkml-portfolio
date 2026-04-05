@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -7,10 +8,24 @@ import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollProgress from './components/ScrollProgress'
-import BackToTop from './components/BackToTop'
 import CursorFollower from './components/CursorFollower'
+import CommandPalette from './components/CommandPalette'
+import CatPaletteButton from './components/CatPaletteButton'
 
 export default function App() {
+  const [paletteOpen, setPaletteOpen] = useState(false)
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        setPaletteOpen(o => !o)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
   return (
     <>
       <ScrollProgress />
@@ -24,8 +39,9 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <BackToTop />
-      <CursorFollower />
+<CursorFollower />
+      <CatPaletteButton onClick={() => setPaletteOpen(true)} />
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
     </>
   )
 }
