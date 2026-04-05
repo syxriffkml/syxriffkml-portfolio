@@ -8,6 +8,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollProgress from './components/ScrollProgress'
 import BackToTop from './components/BackToTop'
+import CursorFollower from './components/CursorFollower'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <CursorFollower />
     </>
   )
 }
