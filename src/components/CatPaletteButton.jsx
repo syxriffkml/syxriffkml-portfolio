@@ -65,7 +65,7 @@ export default function CatPaletteButton({ onClick }) {
         onClick={onClick}
         style={{ ...bubbleStyle, marginBottom: '10px' }}
       >
-        <span style={labelStyle}>⌨️ Ctrl K</span>
+        <span style={labelStyle}>⌨️ Ctrl + K</span>
         {/* tail — centered bottom, pointing down */}
         <span style={{
           position: 'absolute', bottom: '-9px', left: '50%', transform: 'translateX(-50%)',

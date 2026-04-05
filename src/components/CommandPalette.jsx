@@ -20,6 +20,7 @@ export default function CommandPalette({ open, onClose }) {
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState(0)
   const inputRef = useRef(null)
+  const itemRefs = useRef([])
 
   const filtered = query
     ? commands.filter(c => c.label.toLowerCase().includes(query.toLowerCase()))
@@ -29,7 +30,6 @@ export default function CommandPalette({ open, onClose }) {
     if (open) {
       setQuery('')
       setSelected(0)
-      setTimeout(() => inputRef.current?.focus(), 50)
     }
   }, [open])
 
@@ -41,8 +41,17 @@ export default function CommandPalette({ open, onClose }) {
     const onKey = (e) => {
       if (!open) return
       if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowDown') setSelected(s => Math.min(s + 1, filtered.length - 1))
-      if (e.key === 'ArrowUp') setSelected(s => Math.max(s - 1, 0))
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') e.preventDefault()
+      if (e.key === 'ArrowDown') setSelected(s => {
+        const next = Math.min(s + 1, filtered.length - 1)
+        itemRefs.current[next]?.scrollIntoView({ block: 'nearest' })
+        return next
+      })
+      if (e.key === 'ArrowUp') setSelected(s => {
+        const next = Math.max(s - 1, 0)
+        itemRefs.current[next]?.scrollIntoView({ block: 'nearest' })
+        return next
+      })
       if (e.key === 'Enter' && filtered[selected]) {
         filtered[selected].action()
         onClose()
@@ -194,6 +203,7 @@ export default function CommandPalette({ open, onClose }) {
                       return (
                         <motion.button
                           key={cmd.label}
+                          ref={el => { itemRefs.current[globalIndex] = el }}
                           onClick={() => { cmd.action(); onClose() }}
                           onMouseEnter={() => setSelected(globalIndex)}
                           whileTap={{ scale: 0.98 }}
